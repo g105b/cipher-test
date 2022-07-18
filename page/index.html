@@ -1,0 +1,29 @@
+<!doctype html>
+<title>Cipher test!</title>
+<link rel="stylesheet" href="/style.css" />
+
+<h1>Cipher test!</h1>
+<p>Either:</p>
+<ol>
+	<li>Enter a plain text message, click encrypt to get the generated IV and cipher text</li>
+	<li>Enter the cipher text and matching IV, click decrypt to get the original plain text message</li>
+</ol>
+
+<form method="post">
+	<label>
+		<span>Plain text message</span>
+		<textarea name="message"></textarea>
+	</label>
+	<label>
+		<span>Cipher text</span>
+		<textarea name="cipher"></textarea>
+	</label>
+	<label>
+		<span>IV</span>
+		<input name="iv" required />
+	</label>
+	<div class="actions">
+		<button name="do" value="encrypt">Encrypt</button>
+		<button name="do" value="decrypt">Decrypt</button>
+	</div>
+</form>
