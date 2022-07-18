@@ -5,11 +5,15 @@
 <h1>Cipher test!</h1>
 <p>Either:</p>
 <ol>
-	<li>Enter a plain text message, click encrypt to get the generated IV and cipher text</li>
-	<li>Enter the cipher text and matching IV, click decrypt to get the original plain text message</li>
+	<li>Enter a plain text message with a secret, click encrypt to get the generated IV and cipher text</li>
+	<li>Enter the cipher text and matching IV with a secret, click decrypt to get the original plain text message</li>
 </ol>
 
 <form method="post">
+	<label>
+		<span>Secret</span>
+		<input name="secret" required value="sup3r_s3cr3t_p455w0rd!"/>
+	</label>
 	<label>
 		<span>Plain text message</span>
 		<textarea name="message"></textarea>
@@ -20,10 +24,11 @@
 	</label>
 	<label>
 		<span>IV</span>
-		<input name="iv" required />
+		<input name="iv" />
 	</label>
 	<div class="actions">
 		<button name="do" value="encrypt">Encrypt</button>
 		<button name="do" value="decrypt">Decrypt</button>
+		<button name="do" value="reset">Reset</button>
 	</div>
 </form>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16821ac43045538b62f7934cb3a3ce2b",
+    "content-hash": "55d1c0a63f196174411dd37fb8d2605f",
     "packages": [
         {
             "name": "magicalex/write-ini-file",
@@ -59,16 +59,16 @@
         },
         {
             "name": "phpgt/cipher",
-            "version": "v0.2.0",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Cipher.git",
-                "reference": "e2d553a364278abaf73a75a3623befbd1284d6f7"
+                "reference": "376ccab396853d3e5ef551c4035d8f63013a83a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cipher/zipball/e2d553a364278abaf73a75a3623befbd1284d6f7",
-                "reference": "e2d553a364278abaf73a75a3623befbd1284d6f7",
+                "url": "https://api.github.com/repos/PhpGt/Cipher/zipball/376ccab396853d3e5ef551c4035d8f63013a83a1",
+                "reference": "376ccab396853d3e5ef551c4035d8f63013a83a1",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +98,7 @@
             "description": "Two-way encryption of messages for secure plain text transmission.",
             "support": {
                 "issues": "https://github.com/PhpGt/Cipher/issues",
-                "source": "https://github.com/PhpGt/Cipher/tree/v0.2.0"
+                "source": "https://github.com/PhpGt/Cipher/tree/v0.3.0"
             },
             "funding": [
                 {
@@ -106,7 +106,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-01T10:03:16+00:00"
+            "time": "2022-07-18T11:29:54+00:00"
         },
         {
             "name": "phpgt/cli",
