@@ -12,7 +12,7 @@
 <form method="post">
 	<label>
 		<span>Secret</span>
-		<input name="secret" required value="sup3r_s3cr3t_p455w0rd!"/>
+		<input name="secret" required value="sup3r_s3cr3t_p455w0rd"/>
 	</label>
 	<label>
 		<span>Plain text message</span>
@@ -20,11 +20,11 @@
 	</label>
 	<label>
 		<span>Cipher text</span>
-		<textarea name="cipher"></textarea>
+		<textarea name="cipher" placeholder="Hex value"></textarea>
 	</label>
 	<label>
 		<span>IV</span>
-		<input name="iv" />
+		<input name="iv" placeholder="Hex value" />
 	</label>
 	<div class="actions">
 		<button name="do" value="encrypt">Encrypt</button>
@@ -32,3 +32,4 @@
 		<button name="do" value="reset">Reset</button>
 	</div>
 </form>
+
