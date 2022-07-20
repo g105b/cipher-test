@@ -1,35 +1,82 @@
 <!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cipher test!</title>
 <link rel="stylesheet" href="/style.css" />
 
 <h1>Cipher test!</h1>
+<p>Tests the implementation of <a href="https://php.gt/cipher" target="_blank">php.gt/cipher</a> or any other compatible libsodium implementation.</p>
 <p>Either:</p>
 <ol>
 	<li>Enter a plain text message with a secret, click encrypt to get the generated IV and cipher text</li>
 	<li>Enter the cipher text and matching IV with a secret, click decrypt to get the original plain text message</li>
+	<li>Generate a cipher URL using php.gt/cipher or compatible library, visiting this page with the query string</li>
 </ol>
 
-<form method="post">
-	<label>
-		<span>Secret</span>
-		<input name="secret" required value="sup3r_s3cr3t_p455w0rd"/>
-	</label>
-	<label>
-		<span>Plain text message</span>
-		<textarea name="message"></textarea>
-	</label>
-	<label>
-		<span>Cipher text</span>
-		<textarea name="cipher" placeholder="Hex value"></textarea>
-	</label>
-	<label>
-		<span>IV</span>
-		<input name="iv" placeholder="Hex value" />
-	</label>
-	<div class="actions">
-		<button name="do" value="encrypt">Encrypt</button>
-		<button name="do" value="decrypt">Decrypt</button>
-		<button name="do" value="reset">Reset</button>
-	</div>
-</form>
+<p>
+	<a href="/">Reset forms</a>
+</p>
 
+<main>
+	<section>
+		<h1>Encrypt a message</h1>
+
+		<form class="encrypt" action="#encrypt">
+			<input type="hidden" name="do" value="encrypt" />
+
+			<label>
+				<span>Message to encrypt</span>
+				<textarea name="message" required></textarea>
+			</label>
+
+			<label>
+				<span>Shared key</span>
+				<input name="key" placeholder="Leave blank for random" autocomplete="off" />
+			</label>
+			<label>
+				<span>IV</span>
+				<input name="iv" placeholder="Leave blank for random" autocomplete="off" />
+			</label>
+			<div class="actions">
+				<button>Encrypt</button>
+			</div>
+
+			<output hidden id="encrypt">
+				<label>
+					<span>Encrypted cipher text</span>
+					<textarea name="cipherText" readonly></textarea>
+				</label>
+			</output>
+		</form>
+	</section>
+	<section>
+		<h1>Decrypt a message</h1>
+
+		<form class="decrypt" action="#decrypt">
+			<input type="hidden" name="do" value="decrypt" />
+
+			<label>
+				<span>Cipher text</span>
+				<textarea name="cipherText" required></textarea>
+			</label>
+			<label>
+				<span>Shared key</span>
+				<input name="key" required autocomplete="off" />
+			</label>
+			<label>
+				<span>IV</span>
+				<input name="iv" required autocomplete="off" />
+			</label>
+			<div class="actions">
+				<button>Decrypt</button>
+			</div>
+
+			<output id="decrypt" hidden>
+				<label>
+					<span>Decrypted message</span>
+					<textarea name="decrypted" readonly></textarea>
+				</label>
+			</output>
+		</form>
+	</section>
+</main>

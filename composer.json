@@ -1,7 +1,7 @@
 {
 	"require": {
 		"phpgt/webengine": "dev-master",
-		"phpgt/cipher": ">=v0.3.0"
+		"phpgt/cipher": "dev-sodium"
 	},
 	"autoload": {
 		"psr-4": {

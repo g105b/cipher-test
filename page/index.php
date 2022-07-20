@@ -1,24 +1,62 @@
 <?php
-use Gt\Cipher\EncryptedMessage;
-use Gt\Cipher\InitVectorFactory;
-use Gt\Cipher\Message;
+use Gt\Cipher\InitVector;
+use Gt\Cipher\Key;
+use Gt\Cipher\Message\EncryptedMessage;
+use Gt\Cipher\Message\PlainTextMessage;
 use Gt\Dom\HTMLDocument;
 use Gt\Input\Input;
 
+function do_reset():void {
+	header("/");
+	exit;
+}
+
 function do_encrypt(Input $input, HTMLDocument $document):void {
-	$message = new Message($input->getString("message"), $input->getString("secret"));
-	$document->querySelector("[name='cipher']")->innerHTML = $message->getCipherText();
-	$document->querySelector("[name='iv']")->value = $message->getIv();
+// Generate IV
+	$ivBytes = null;
+	if($value = $input->getString("iv")) {
+		$ivBytes = base64_decode($value);
+	}
+	$iv = new InitVector();
+	if($ivBytes) {
+		$iv = $iv->withBytes($ivBytes);
+	}
+
+// Generate sender key pair
+	$keyBytes = null;
+	if($value = $input->getString("key")) {
+		$keyBytes = base64_decode($value);
+	}
+	$key = new Key($keyBytes);
+
+// Encrypt message
+	$message = new PlainTextMessage($input->getString("message"), $iv);
+	$cipherText = $message->encrypt($key);
+
+// Output
+	$form = $document->querySelector("form.encrypt");
+	$form["message"]->innerHTML = $message;
+	$form["key"]->value = $key;
+	$form["iv"]->value = $iv;
+	$form["cipherText"]->innerHTML = $cipherText;
+	$form->querySelector("output")->hidden = false;
 }
 
 function do_decrypt(Input $input, HTMLDocument $document):void {
-	$ivFactory = new InitVectorFactory();
-	$iv = $ivFactory->fromString($input->getString("iv"));
-	$encMessage = new EncryptedMessage($input->getString("cipher"), $input->getString("secret"), $iv);
-	$document->querySelector("[name='message']")->innerHTML = $encMessage->getMessage();
-}
+	$ivBytes = base64_decode($input->getString("iv"));
+	$iv = (new InitVector())->withBytes($ivBytes);
 
-function do_reset():void {
-	header("Location: ./");
-	exit;
+	$keyBytes = base64_decode($input->getString("key"));
+	$key = new Key($keyBytes);
+
+	$cipherText = $input->getString("cipherText");
+	$encryptedMessage = new EncryptedMessage($cipherText, $iv);
+	$decrypted = $encryptedMessage->decrypt($key);
+
+	$form = $document->querySelector("form.decrypt");
+	$form["cipherText"]->innerHTML = $cipherText;
+	$form["key"]->value = $key;
+	$form["iv"]->value = $iv;
+	$form["decrypted"]->innerHTML = $decrypted;
+	$form->querySelector("output")->hidden = false;
 }

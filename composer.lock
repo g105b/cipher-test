@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55d1c0a63f196174411dd37fb8d2605f",
+    "content-hash": "4502e1cac9ce8c19867d677b70ff4122",
     "packages": [
         {
             "name": "magicalex/write-ini-file",
@@ -59,20 +59,20 @@
         },
         {
             "name": "phpgt/cipher",
-            "version": "v0.3.0",
+            "version": "dev-sodium",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhpGt/Cipher.git",
-                "reference": "376ccab396853d3e5ef551c4035d8f63013a83a1"
+                "reference": "20f1403e45db4068bfa09986f1feecaa5c5a056a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhpGt/Cipher/zipball/376ccab396853d3e5ef551c4035d8f63013a83a1",
-                "reference": "376ccab396853d3e5ef551c4035d8f63013a83a1",
+                "url": "https://api.github.com/repos/PhpGt/Cipher/zipball/20f1403e45db4068bfa09986f1feecaa5c5a056a",
+                "reference": "20f1403e45db4068bfa09986f1feecaa5c5a056a",
                 "shasum": ""
             },
             "require": {
-                "ext-openssl": "*",
+                "ext-sodium": "*",
                 "php": ">=8.0",
                 "phpgt/http": "v1.*"
             },
@@ -98,7 +98,7 @@
             "description": "Two-way encryption of messages for secure plain text transmission.",
             "support": {
                 "issues": "https://github.com/PhpGt/Cipher/issues",
-                "source": "https://github.com/PhpGt/Cipher/tree/v0.3.0"
+                "source": "https://github.com/PhpGt/Cipher/tree/sodium"
             },
             "funding": [
                 {
@@ -106,7 +106,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-18T11:29:54+00:00"
+            "time": "2022-07-20T11:01:41+00:00"
         },
         {
             "name": "phpgt/cli",
@@ -1500,7 +1500,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "phpgt/webengine": 20
+        "phpgt/webengine": 20,
+        "phpgt/cipher": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
