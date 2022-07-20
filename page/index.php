@@ -1,10 +1,20 @@
 <?php
+use Gt\Cipher\EncryptedUri;
 use Gt\Cipher\InitVector;
 use Gt\Cipher\Key;
 use Gt\Cipher\Message\EncryptedMessage;
 use Gt\Cipher\Message\PlainTextMessage;
 use Gt\Dom\HTMLDocument;
+use Gt\Http\Uri;
 use Gt\Input\Input;
+
+function go(Input $input, HTMLDocument $document):void {
+	if($cipher = $input->getString("cipher")) {
+		$form = $document->querySelector("form.decrypt");
+		$form["cipherText"]->innerHTML = $cipher;
+		$form["iv"]->value = $input->getString("iv");
+	}
+}
 
 function do_reset():void {
 	header("/");
